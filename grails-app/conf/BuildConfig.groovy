@@ -64,5 +64,6 @@ grails.project.dependency.resolution = {
         compile ":kickstart-with-bootstrap:0.9.6",{
             excludes 'resources'
         }
+        compile ":taggable:1.0.1"
     }
 }
