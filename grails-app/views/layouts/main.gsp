@@ -7,22 +7,49 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
+		<title><g:layoutTitle default="OWASP S.T.I.N.G"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
-		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
+		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'owasp_favicon.ico')}" type="image/x-icon">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-		<g:layoutHead/>
+		
+		<r:require modules="jquery"/>
+		<r:require modules="bootstrap"/>
+		<r:require modules="bootstrap_utils"/>
+		<r:require modules="application"/>
+	
 		<r:layoutResources />
+		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<g:javascript library="application"/>
+		<div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" href="#">OWASP =S.T.I.N.G=</a>
+            <ul class="nav">
+              <li ${controllerName == 'home' ? 'class="active"' : ''}><a href="/sting">Home</a></li>
+<%--              <li class='@(if(controller == "questionnaire")"active")'><a href="/questionnaire">Questionnaire</a></li>--%>
+              <li ${controllerName.equals('requirement') ? 'class="active"' : ''}><a href="requirements">Requirements</a></li>
+              <li class='dropdown'>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dev Stuff</a>
+                <ul class="dropdown-menu">
+                    <li><a href="requirements/addSomeJunk">Add Demo Requirements</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                	<g:if test="${flash.message}">
+                		<div class="flash">
+                			${flash.message}
+                		</div>
+                	</g:if>
+                	<div id="errorMessage" class="error"></div>
+                    <g:layoutBody/>
+                </div>
+            </div>
+        </div>
 		<r:layoutResources />
 	</body>
 </html>

@@ -26,6 +26,16 @@ class RequirementCatalog {
 	
 	static hasMany = [requirements : Requirement]
 	
+	static RequirementCatalog findByRequirement(Requirement requirement)
+	{
+		def result = RequirementCatalog.createCriteria().get {
+			requirements {
+				idEq(requirement.id)
+			}
+		}
+		return result
+	}
+	
     static mapping = {
     }
     

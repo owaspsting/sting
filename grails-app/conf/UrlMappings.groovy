@@ -23,11 +23,19 @@ class UrlMappings {
 			action		= { 'index' }
             view		= { 'index' }
         }
-		"/$controller/$action?/$id?"{
-			constraints {
-				controller(matches:/^((?!(api|mobile|web)).*)$/)
-		  	}
+//		"/$controller/$action?/$id?"{
+//			constraints {
+//				controller(matches:/^((?!(api|mobile|web)).*)$/)
+//		  	}
+//		}
+		
+		"/requirements"(controller: "Requirement", parseRequest: true) {
+			action = [GET: "list", POST: "unsupported", PUT: "unsupported", DELETE: "unsupported"]
 		}
+		name "requirement" : "/requirement/$id"(controller: "Requirement", parseRequest: true) {
+			action = [GET: "unsupported", POST: "unsupported", PUT: "unsupported", DELETE: "deleteRequirement"]
+		}
+		"/requirements/addSomeJunk" (controller: "Requirement", action: "addSomeJunkRequirements")
 		
 		/* 
 		 * System Pages without controller 

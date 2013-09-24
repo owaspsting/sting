@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
         compile ":kickstart-with-bootstrap:0.9.6",{
             excludes 'resources'
         }
+//		compile ":twitter-bootstrap:2.3.2"
         compile ":taggable:1.0.1"
     }
 }
